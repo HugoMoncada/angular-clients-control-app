@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Client Control</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        </ul>
+        <div class="ml-auto d-flex">
+          <div *ngIf="isLoggedIn" class="d-flex">
+            <p class="my-auto">Hi {{userLoggedIn}}</p>
+            <a class="my-auto" routerLink="/configuration" routerLinkActive="router-link-active"></a>
+          </div>
+          
+          <div *ngIf="!userLoggedIn">
+            <a class="nav-link" routerLink="/login">
+              <i class="fas fa-user"> Log in</i>
+            </a>
+          </div>
+
+          <div *ngIf="!userLoggedIn">
+            <a class="nav-link" routerLink="/register">
+              <i class="fas fa-user" routerLinkActive="router-link-active">Register</i>
+            </a>
+          </div>
+
+               
+          <div *ngIf="userLoggedIn">
+            <a class="nav-link" (click)="logOut()" style="cursor:pointer">
+              <i class="fas fa-user"> Log Out</i>
+            </a>
+          </div>
+            
+         
+        </div>
+      </div>
+    </div>
+  </nav>
+

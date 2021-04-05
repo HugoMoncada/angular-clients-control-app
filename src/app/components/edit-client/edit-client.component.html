@@ -1,0 +1,131 @@
+<header id="main-header" class="py-2 bg-dark text-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>
+                    <i class="fas fa-user"></i> Edit Client
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<form #clientForm="ngForm" (ngSubmit)="save(clientForm)">
+    <flash-messages></flash-messages>
+
+    <section id="actions" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-3">
+                    <a routerLink="/" class="btn btn-dark btn-block mb-2">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </div>
+                <div class="col-md-6">
+                  <button  class="btn  btn-block btn-success mb-2" type="submit" >
+                    <i class="fas fa-check"></i> Save
+                  </button>
+                </div>
+                <div class="col-md-3">
+                    <a href="#" (click)="delete()" class="btn  btn-block btn-danger">
+                        <i class="fas fa-trash"></i> Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="details">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Edit Client</h4>
+                        </div>
+                        <div class="card-body">
+                            
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" 
+                    name="name" 
+                    class="form-control" 
+                    #name = "ngModel"
+                    [(ngModel)]="client.nombre" 
+                    [ngClass] = "{'is-invalid': name.errors && name.touched}"
+                    required
+                    minlength="2"
+                    >
+            <div [hidden]="!name.errors?.required" class="invalid-feedback">
+                Name is required
+            </div>
+            <div [hidden]="!name.errors?.minlength" class="invalid-feedback">
+                Must have at least 2 characters
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" 
+                    name="lastName" 
+                    class="form-control"  
+                    [(ngModel)]="client.apellido" 
+                    #lastName="ngModel"
+                    [ngClass] = "{'is-invalid': lastName.errors && lastName.touched}"
+                    required
+                    minlength="2"
+                    >
+            <div [hidden]="!lastName.errors?.required" class="invalid-feedback">
+                last Name is required
+            </div>
+            <div [hidden]="!lastName.errors?.minlength" class="invalid-feedback">
+                Must have at least 2 characters
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" 
+                    name="email" 
+                    class="form-control"  
+                    [(ngModel)]="client.email" 
+                    #email="ngModel"
+                    [ngClass] = "{'is-invalid': email.errors && lastName.touched}"
+                    required
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    >
+            <div [hidden]="!email.errors?.required" class="invalid-feedback">
+                Email is required
+            </div>
+            <div [hidden]="!email.errors?.pattern" class="invalid-feedback">
+                Invalid Email
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Balance</label>
+            <input type="number" 
+                    name="balance" 
+                    class="form-control"  
+                    [(ngModel)]="client.saldo" 
+                    #balance="ngModel"
+                    [ngClass] = "{'is-invalid': balance.errors && balance.touched}"
+                    required
+                    >
+            <div [hidden]="!balance.errors?.required" class="invalid-feedback">
+                Balance is required
+            </div>
+ 
+        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+
+</form>
